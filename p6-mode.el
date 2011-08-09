@@ -115,12 +115,14 @@
 
 (setq p6ColonSomething "\s-*\\(:\\w+\\)")
 
-(setq p6Package "\\(?:use \\)\\(\\w+\\(::\\w+\\)*\\)")
+(setq p6Package (list "\\(use \\)\\(\\w+\\(::\\w+\\)*\\)"
+                      '(1 font-lock-keyword-face t)
+                      '(2 font-lock-builtin-face t t)))
 
 (setq p6-font-lock-keywords
       `(
         (,p6Comment . font-lock-comment-face)
-        (,p6Package 1 font-lock-builtin-face)
+        ,p6Package
         (,p6Scalar . font-lock-keyword-face)
         (,p6Array . font-lock-keyword-face)
         (,p6ColonSomething 1 font-lock-builtin-face)
