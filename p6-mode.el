@@ -124,7 +124,7 @@
 
 (setq p6ColonSomething "\s-*\\(:\\sw+\\)")
 
-(setq p6Package (list "\\(use \\)\\(\\sw+\\(::\\sw+\\)*\\)"
+(setq p6Package (list "\\<\\(use \\)\\(\\sw+\\(::\\sw+\\)*\\)"
                       '(1 font-lock-keyword-face t)
                       '(2 font-lock-builtin-face t t)))
 
