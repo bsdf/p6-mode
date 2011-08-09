@@ -103,11 +103,18 @@
 
 (setq p6Comment "#.*$")
 
-(setq p6Scalar "$\\sw+")
+(setq p6IdentifierModifiers (concat (regexp-opt '("*" "#" "?")) "?"))
 
-(setq p6Hash "%\\sw+")
+(setq p6Identifier (concat p6IdentifierModifiers
+                           "\\sw+"))
 
-(setq p6Array "@\\sw+")
+(setq p6Scalar (concat "$" p6Identifier))
+
+(setq p6Hash (concat "%" p6Identifier))
+
+(setq p6Array (concat "@" p6Identifier))
+
+(setq p6Reference (concat "&" p6Identifier))
 
 (setq p6String "\\(\"\\|'\\)\\(.*?\\)\\(\"\\|'\\)")
 
@@ -129,9 +136,10 @@
         ,p6Package
         (,p6Scalar . font-lock-keyword-face)
         (,p6Array . font-lock-keyword-face)
+        (,p6Reference . font-lock-keyword-face)
         (,p6ColonSomething 1 font-lock-string-face)
-        (,p6Funcall 1 font-lock-builtin-face)
         (,p6ModuleAccess . font-lock-type-face)
+        (,p6Funcall 1 font-lock-builtin-face)
         (,p6String . font-lock-string-face)
         (,p6HashString 1 font-lock-string-face)
         (,p6Operator . font-lock-type-face)
