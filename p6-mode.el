@@ -121,6 +121,8 @@
 
 (setq p6ModuleAccess "\\(\\sw+\\(::\\sw+\\)+\\)")
 
+(setq p6Funcall "\\(\\sw+\\)(.*)")
+
 (setq p6-font-lock-keywords
       `(
         (,p6Comment . font-lock-comment-face)
@@ -128,6 +130,7 @@
         (,p6Scalar . font-lock-keyword-face)
         (,p6Array . font-lock-keyword-face)
         (,p6ColonSomething 1 font-lock-string-face)
+        (,p6Funcall 1 font-lock-builtin-face)
         (,p6String . font-lock-string-face)
         (,p6HashString 1 font-lock-string-face)
         (,p6Operator . font-lock-type-face)
