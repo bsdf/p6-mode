@@ -1,3 +1,8 @@
+(setq p6-syntax-table
+      (let ((table (make-syntax-table c-mode-syntax-table)))
+        (modify-syntax-entry ?_ "w" table)
+        table))
+
 (setq p6Attention
   (regexp-opt '("ACHTUNG" "ATTN" "ATTENTION" "FIXME" "NB" "TODO" "TBD" "WTF" "XXX" "NOTE") 'words))
 
@@ -98,11 +103,11 @@
 
 (setq p6Comment "#.*$")
 
-(setq p6Scalar "\\<$\\??\\(\\w\\|_\\)+\\>")
+(setq p6Scalar "$\\sw+")
 
-(setq p6Hash "%\\w+")
+(setq p6Hash "%\\sw+")
 
-(setq p6Array "@\\(\\w\\|_\\)+\\>")
+(setq p6Array "@\\sw+")
 
 (setq p6String "\\(\"\\|'\\)\\(.*?\\)\\(\"\\|'\\)")
 
@@ -110,12 +115,12 @@
 
 (setq p6ColonSomething "\s-*\\(:\\w+\\)")
 
-(setq p6Package "\\(use \\)\\(\\w+\\(::\\w+\\)*\\)")
+(setq p6Package "\\(?:use \\)\\(\\w+\\(::\\w+\\)*\\)")
 
 (setq p6-font-lock-keywords
       `(
         (,p6Comment . font-lock-comment-face)
-        (,p6Package 2 font-lock-builtin-face)
+        (,p6Package 1 font-lock-builtin-face)
         (,p6Scalar . font-lock-keyword-face)
         (,p6Array . font-lock-keyword-face)
         (,p6ColonSomething 1 font-lock-builtin-face)
@@ -144,6 +149,9 @@
 (define-derived-mode p6-mode fundamental-mode
   "p6 mode"
   "MaJoR MoDe FoR eDiTiNG perl6..."
+
+  ;; set syntax table
+  (set-syntax-table p6-mode-syntax-table)
 
   ;; syntax highlighting
   (setq font-lock-defaults '((p6-font-lock-keywords)))
