@@ -113,7 +113,7 @@
 
 (setq p6HashString "\\([a-zA-Z_0-9]+\\)\\s-*?\\(?:=>\\)")
 
-(setq p6ColonSomething "\s-*\\(:\\w+\\)")
+(setq p6ColonSomething "\s-*\\(:\\sw+\\)")
 
 (setq p6Package (list "\\(use \\)\\(\\w+\\(::\\w+\\)*\\)"
                       '(1 font-lock-keyword-face t)
@@ -125,7 +125,7 @@
         ,p6Package
         (,p6Scalar . font-lock-keyword-face)
         (,p6Array . font-lock-keyword-face)
-        (,p6ColonSomething 1 font-lock-builtin-face)
+        (,p6ColonSomething 1 font-lock-string-face)
         (,p6String . font-lock-string-face)
         (,p6HashString 1 font-lock-string-face)
         (,p6Operator . font-lock-type-face)
