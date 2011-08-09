@@ -121,7 +121,7 @@
 
 (setq p6ModuleAccess "\\(\\sw+\\(::\\sw+\\)+\\)")
 
-(setq p6Funcall "\\(\\sw+\\)(.*)")
+(setq p6Funcall "\\(\\sw+\\)\\s-*(")
 
 (setq p6-font-lock-keywords
       `(
