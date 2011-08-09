@@ -99,7 +99,7 @@
                 "can" "isa" "flush" "arity" "assuming" "rewind" "callwith" "callsame" "nextwith" "nextsame"
                 "attr" "eval" "elsewhere" "none" "srand" "trim" "trim" "start" "trim" "end" "lastcall" "WHAT"
                 "WHERE" "HOW" "WHICH" "VAR" "WHO" "WHENCE" "ACCEPTS" "REJECTS" "does" "not" "true" "iterator" "by"
-                "re" "im" "invert" "flip") 'word))
+                "re" "im" "invert" "flip") 'words))
 
 (setq p6Comment "#.*$")
 
