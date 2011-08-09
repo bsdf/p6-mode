@@ -94,18 +94,39 @@
                 "can" "isa" "flush" "arity" "assuming" "rewind" "callwith" "callsame" "nextwith" "nextsame"
                 "attr" "eval" "elsewhere" "none" "srand" "trim" "trim" "start" "trim" "end" "lastcall" "WHAT"
                 "WHERE" "HOW" "WHICH" "VAR" "WHO" "WHENCE" "ACCEPTS" "REJECTS" "does" "not" "true" "iterator" "by"
-                "re" "im" "invert" "flip") 'words))
+                "re" "im" "invert" "flip") 'word))
 
 (setq p6Comment "#.*$")
+
+(setq p6Scalar "\\<$\\??\\(\\w\\|_\\)+\\>")
+
+(setq p6Hash "%\\w+")
+
+(setq p6Array "@\\(\\w\\|_\\)+\\>")
+
+(setq p6String "\\(\"\\|'\\)\\(.*?\\)\\(\"\\|'\\)")
+
+(setq p6HashString "\\([a-zA-Z_0-9]+\\)\\s-*?\\(?:=>\\)")
+
+(setq p6ColonSomething "\s-*\\(:\\w+\\)")
+
+(setq p6Package "\\(use \\)\\(\\w+\\(::\\w+\\)*\\)")
 
 (setq p6-font-lock-keywords
       `(
         (,p6Comment . font-lock-comment-face)
+        (,p6Package 2 font-lock-builtin-face)
+        (,p6Scalar . font-lock-keyword-face)
+        (,p6Array . font-lock-keyword-face)
+        (,p6ColonSomething 1 font-lock-builtin-face)
+        (,p6String . font-lock-string-face)
+        (,p6HashString 1 font-lock-string-face)
+        (,p6Operator . font-lock-type-face)
         (,p6Attention . font-lock-type-face)
         (,p6DeclareRoutine . font-lock-type-face)
-        (,p6Module . font-lock-type-face)
+        (,p6Module . font-lock-builtin-face)
         (,p6Variable . font-lock-type-face)
-        (,p6Include . font-lock-type-face)
+        (,p6Include . font-lock-builtin-face)
         (,p6Conditional . font-lock-type-face)
         (,p6VarStorage . font-lock-type-face)
         (,p6Repeat . font-lock-type-face)
@@ -117,9 +138,8 @@
         (,p6Number . font-lock-type-face)
         (,p6Pragma . font-lock-type-face)
         (,p6Type . font-lock-type-face)
-        (,p6Operator . font-lock-type-face)
-        (,p6Routines . font-lock-type-face)
-        ))
+        (,p6Routines . font-lock-keyword-face)
+      ))
 
 (define-derived-mode p6-mode fundamental-mode
   "p6 mode"
@@ -128,22 +148,3 @@
   ;; syntax highlighting
   (setq font-lock-defaults '((p6-font-lock-keywords)))
 )
-
-(setq p6Attention nil)
-(setq p6DeclareRoutine nil)
-(setq p6Module nil)
-(setq p6Variable nil)
-(setq p6Include nil)
-(setq p6Conditional nil)
-(setq p6VarStorage nil)
-(setq p6Repeat nil)
-(setq p6FlowControl nil)
-(setq p6TypeConstraint nil)
-(setq p6ClosureTrait nil)
-(setq p6Exception nil)
-(setq p6Property nil)
-(setq p6Number nil)
-(setq p6Pragma nil)
-(setq p6Type nil)
-(setq p6Operator nil)
-(setq p6Routines nil)
