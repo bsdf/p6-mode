@@ -119,6 +119,8 @@
                       '(1 font-lock-keyword-face t)
                       '(2 font-lock-builtin-face t t)))
 
+(setq p6ModuleAccess "\\(\\sw+\\(::\\sw+\\)+\\)")
+
 (setq p6-font-lock-keywords
       `(
         (,p6Comment . font-lock-comment-face)
@@ -146,6 +148,7 @@
         (,p6Pragma . font-lock-type-face)
         (,p6Type . font-lock-type-face)
         (,p6Routines . font-lock-keyword-face)
+        (,p6ModuleAccess . font-lock-builtin-face)
       ))
 
 (define-derived-mode p6-mode fundamental-mode
