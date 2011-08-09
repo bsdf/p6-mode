@@ -1,6 +1,8 @@
 (setq p6-syntax-table
       (let ((table (make-syntax-table c-mode-syntax-table)))
         (modify-syntax-entry ?_ "w" table)
+        (modify-syntax-entry ?# "<" table)
+        (modify-syntax-entry ?\n ">" table)
         table))
 
 (setq p6Attention
