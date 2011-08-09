@@ -148,7 +148,7 @@
         (,p6Pragma . font-lock-type-face)
         (,p6Type . font-lock-type-face)
         (,p6Routines . font-lock-keyword-face)
-        (,p6ModuleAccess . font-lock-builtin-face)
+        (,p6ModuleAccess . font-lock-type-face)
       ))
 
 (define-derived-mode p6-mode fundamental-mode
