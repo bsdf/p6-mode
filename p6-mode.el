@@ -136,12 +136,12 @@
       `(
         (,p6Comment . font-lock-comment-face)
         ,p6Package
-        (,p6Scalar . font-lock-keyword-face)
-        (,p6Array . font-lock-keyword-face)
-        (,p6Reference . font-lock-keyword-face)
-        (,p6ColonSomething 1 font-lock-string-face)
+         (,p6Scalar 1 font-lock-keyword-face t t)
+        (,p6Array (1 font-lock-keyword-face t t))
+        (,p6Reference (1 font-lock-keyword-face t t))
+        (,p6ColonSomething (1 font-lock-string-face append append))
         (,p6ModuleAccess . font-lock-type-face)
-        (,p6Funcall 1 font-lock-builtin-face)
+        (,p6Funcall 1 font-lock-function-name-face)
         (,p6String . font-lock-string-face)
         (,p6HashString 1 font-lock-string-face)
         (,p6Operator . font-lock-type-face)
@@ -160,8 +160,8 @@
         (,p6Property . font-lock-type-face)
         (,p6Number . font-lock-type-face)
         (,p6Pragma . font-lock-type-face)
-        (,p6Type . font-lock-type-face)
-        (,p6Routines . font-lock-keyword-face)
+        (,p6Type (1 font-lock-type-face append append))
+        (,p6Routines (1 font-lock-keyword-face append append))
       ))
 
 (define-derived-mode p6-mode fundamental-mode
